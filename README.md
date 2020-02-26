@@ -1,6 +1,11 @@
 Devo Coding Exercise - TfIdf
 ==================================
 
+### Big O time and Space Complexity
++ Time complexity by document is: O(nxm) where n is the number of terms to analyze and m the number of words in the document 
+(algorithm is running in a parallel stream some performance improvements may happen)
++ Space complexity by document is: O(n+m) where n and m are the same as before
+
 ### Requirements
 + java 8
 + maven 3 
