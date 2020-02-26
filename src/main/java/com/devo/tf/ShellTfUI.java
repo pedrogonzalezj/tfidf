@@ -25,8 +25,8 @@ public class ShellTfUI implements TfUI {
         List<Document> sortedDocs = new ArrayList<>(tfidfs);
         sortedDocs.sort((a,b)-> b.compareTo(a));
         for(int i = 0; i<maxResults && i<sortedDocs.size(); i++) {
-            System.out.println(sortedDocs.get(i).getDocumentName() + " " + df.format(sortedDocs.get(i).getTfIdf()));
+            System.out.println("Tf-idf> " + sortedDocs.get(i).getDocumentName() + " " + df.format(sortedDocs.get(i).getTfIdf()));
         }
-        System.out.println();
+        System.out.println("Tf-idf>");
     }
 }

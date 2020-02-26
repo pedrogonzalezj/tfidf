@@ -24,8 +24,10 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 public class App {
 
     public static void main( String[] args ) {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println("Exited from Tf/If checker program")));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println("Exited from Tf-Idf report daemon")));
         final Options options = commandLineOptions();
+        System.out.println("Tf-idf>");
+        System.out.println("Tf-idf> daemon running...");
         try {
             final CommandLineParser cmd = new DefaultParser();
             final CommandLine line  = cmd.parse(options, args);
