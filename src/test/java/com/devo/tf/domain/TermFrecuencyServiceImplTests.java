@@ -7,44 +7,39 @@ import org.junit.jupiter.api.Test;
 
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 public class TermFrecuencyServiceImplTests {
 
     private TermFrecuencyService service;
-    private FileReader mockFileReader;
-
-    private File fileA;
-    private File fileB;
-    private File fileC;
 
     @BeforeEach
     public void setup() {
-        mockFileReader = mock(FileReader.class);
-        service = new TermFrecuencyServiceImpl(mockFileReader);
-        fileA = new File("src/test/resources/document_1.txt");
-        fileB = new File("src/test/resources/document_2.txt");
-        fileC = new File("src/test/resources/document_3.txt");
+        service = new TermFrecuencyServiceImpl();
     }
 
     @Test
     @DisplayName("term frecuency value is the right one")
     public void assertThatCanCalculateTermFrecuency() {
-        when(mockFileReader.read(fileA)).thenReturn(Stream.of("Lorem Ipsum of simply,"," dummy text, of the "));
-        Optional<Term>  maybeTerm = service.calculate("ipsum", fileA);
+        final List<String> words = new ArrayList<>();
+        words.add("lorem");
+        words.add("ipsum");
+        words.add("of");
+        words.add("simply");
+        words.add("dummy");
+        words.add("text");
+        words.add("of");
+        words.add("the");
+        Optional<Term>  maybeTerm = service.calculate("ipsum", words);
         assertEquals((float)1/8,maybeTerm.get().getFrecuency().floatValue(),0.01f);
-        verify(mockFileReader).read(fileA);
-        when(mockFileReader.read(fileB)).thenReturn(Stream.of("Lorem Ipsum of simply,"," dummy text, of the "));
-        maybeTerm = service.calculate("of", fileB);
+        maybeTerm = service.calculate("of", words);
         assertEquals((float)2/8,maybeTerm.get().getFrecuency().floatValue(),0.01f);
-        verify(mockFileReader).read(fileB);
-        when(mockFileReader.read(fileC)).thenReturn(Stream.of("Lorem Ipsum of simply,"," dummy text, of the "));
-        maybeTerm = service.calculate("jam", fileC);
+        maybeTerm = service.calculate("jam", words);
         assertFalse(maybeTerm.isPresent());
-        verify(mockFileReader).read(fileC);
     }
 }
