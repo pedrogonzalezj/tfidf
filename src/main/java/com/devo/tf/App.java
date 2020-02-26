@@ -42,9 +42,8 @@ public class App {
             final Context ctx = new Context();
             final FileReader fileReader = new FileReaderImpl();
             final TfUI ui = new ShellTfUI(Integer.parseInt(maxResults));
-            final TermFrecuencyService termFrecuencyService = new TermFrecuencyServiceImpl();
             final TfIdfService tfIdfService = new TfIdfServiceImpl();
-            final DocumentAnalysisService documentAnalysisService = new DocumentAnalysisServiceImpl(termFrecuencyService,fileReader);
+            final DocumentAnalysisService documentAnalysisService = new DocumentAnalysisServiceImpl(fileReader);
             final DirectoryAnalysisService service = new DirectoryAnalysisServiceImpl(documentAnalysisService);
             // Start
             service.analyze(ctx,directory,terms);

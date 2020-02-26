@@ -1,7 +1,7 @@
 package com.devo.tf.infrastructure;
 
 
-import com.devo.tf.application.DocumentAnalysisService;
+import com.devo.tf.domain.DocumentAnalysisService;
 import com.devo.tf.domain.Context;
 import com.devo.tf.domain.Document;
 

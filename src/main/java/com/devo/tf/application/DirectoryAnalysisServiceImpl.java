@@ -3,6 +3,7 @@ package com.devo.tf.application;
 
 import com.devo.tf.domain.Context;
 import com.devo.tf.domain.Document;
+import com.devo.tf.domain.DocumentAnalysisService;
 
 import java.io.File;
 import java.util.*;
